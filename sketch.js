@@ -6,9 +6,16 @@ var offset = 100;
 var scalar = 5;
 var velo = 0.01;
 
+
+//an array to store multiple clouds
+var clouds = [];
+
 function setup() {
   createCanvas(600,400);
   background(0);
+
+  //create the clouds based on the points in points.js
+  
 
 }
 
@@ -17,11 +24,11 @@ function draw() {
   var y1 = offset + sin(angle) * scalar;
   angle += velo;
 
-  var randomspeed = random(0.2, 1);
-  var randomscale = random(20, 80);
-  var randompoints1 = random(-20, 20);
-  var randompoints2 = random(-20, 20);
-  var randompoints3 = random(-20, 20);
+  var randomspeed = 1;//random(0.2, 1);
+  var randomscale = 20;//random(20, 80);
+  var randompoints1 = 0;//random(-20, 20);
+  var randompoints2 = 0;//random(-20, 20);
+  var randompoints3 = 0;//random(-20, 20);
   var speed = randomspeed;
   xPosition += speed;
 
