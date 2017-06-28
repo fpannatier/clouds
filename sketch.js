@@ -74,6 +74,11 @@ function draw() {
 */
 
   //move the clounds
+  for(var i=0; i<clouds.length; i++){
+    var c = clouds[i];
+    c.x += c.speed;
+  }
+
 
 
     
@@ -87,7 +92,7 @@ function draw() {
     var tris = cloud.triangles;
     for(var j=0; j<tris.length; j++){
       
-      print('triangles j: ' + j);
+     // print('triangles j: ' + j);
       var t = tris[j];
 
       var p1 = pts[t[0]];
@@ -111,7 +116,7 @@ function draw() {
     pop();
   }
 
-  noLoop();
+ // noLoop();
 
 }
 
