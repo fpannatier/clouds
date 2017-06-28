@@ -9,7 +9,7 @@ var velo = 0.01;
 
 //an array to store multiple clouds
 var clouds = [];
-var nClounds = 1;
+var nClounds = 5;
 
 function setup() {
   createCanvas(600,400);
@@ -19,13 +19,21 @@ function setup() {
   for(var i=0; i<nClounds; i++){
     //create a cloud object
     var cloud = {
-      x: random(0,width),
+      x: 0,//random(0,width),
       y: random(0,height),
-      scale: random(0.5,1.5),
+      scale: random(0.2,1),
       speed: random(0.2,1),
       points: copyPointArray(points),
       triangles: triangles
     };
+
+    var rand = 5;
+    //slightly change the points so that cloud gets individual shape
+    for(var j=0; j<cloud.points.length; j++){
+      var p = cloud.points[j];
+      p.x += random(-rand,rand);
+      p.y += random(-rand,rand);
+    }
 
     print('cloud.points');
     print(cloud.points);
@@ -39,39 +47,6 @@ function setup() {
 
 function draw() {
   background(0);
- /* var y1 = offset + sin(angle) * scalar;
-  angle += velo;
-
-  var randomspeed = 1;//random(0.2, 1);
-  var randomscale = 20;//random(20, 80);
-  var randompoints1 = 0;//random(-20, 20);
-  var randompoints2 = 0;//random(-20, 20);
-  var randompoints3 = 0;//random(-20, 20);
-  var speed = randomspeed;
-  xPosition += speed;
-
-  if (xPosition > width) {
-    xPosition = 0-200;
-  }
-
-  push();
-  translate(xPosition, y1);
-  scale(randomscale / 60.0);
-
-
-  for (var i = 0; i < triangles.length; i++) {
-    var t = triangles[i];
-
-    stroke('black');
-    fill('white');
-    beginShape(TRIANGLES);
-    vertex(t[0].x + randompoints1, t[0].y + randompoints1);
-    vertex(t[1].x + randompoints2, t[1].y + randompoints2);
-    vertex(t[2].x + randompoints3, t[2].y + randompoints3);
-    endShape();
-  }
-  pop();
-*/
 
   //move the clounds
   for(var i=0; i<clouds.length; i++){
@@ -80,8 +55,6 @@ function draw() {
   }
 
 
-
-    
   //draw the clouds
   for(var i=0; i<clouds.length; i++){
     var cloud = clouds[i];
@@ -115,8 +88,6 @@ function draw() {
 
     pop();
   }
-
- // noLoop();
 
 }
 
