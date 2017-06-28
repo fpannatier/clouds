@@ -96,6 +96,9 @@ y: 86.947
 }];
 
 //define triangles
+//here I took point indices instead of the actual points,
+//which then can be used to get the corresponding point
+//from the points array. 
 var triangles = [
   [15,17,20],
   [15,4,16],
