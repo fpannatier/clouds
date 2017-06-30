@@ -64,7 +64,7 @@ function draw() {
     var pts = cloud.points;
     var tris = cloud.triangles;
     for(var j=0; j<tris.length; j++){
-      
+
      // print('triangles j: ' + j);
       var t = tris[j];
 
