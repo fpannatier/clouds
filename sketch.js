@@ -72,8 +72,9 @@ function draw() {
       var p2 = pts[t[1]];
       var p3 = pts[t[2]];
 
-      stroke('black');
-      fill('white');
+      stroke('white');
+      strokeWeight(0.1);
+      fill(255,255,255,170);
       beginShape(TRIANGLES);
       vertex(p1.x,p1.y);
       vertex(p2.x,p2.y);
@@ -81,11 +82,11 @@ function draw() {
       endShape();
     }
 
-    for(var j=0; j<pts.length; j++){
+/*    for(var j=0; j<pts.length; j++){
       var p = pts[j];
       ellipse(p.x,p.y,3,3);
     }
-
+*/
     pop();
   }
 
