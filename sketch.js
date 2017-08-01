@@ -9,17 +9,20 @@ var velo = 0.01;
 
 //an array to store multiple clouds
 var clouds = [];
-var nClounds = 5;
+var nClounds = 20;
+
+var cloudSlider;
 
 function setup() {
   createCanvas(600,400);
   background(0);
 
   //create the clouds based on the points in points.js
+
   for(var i=0; i<nClounds; i++){
     //create a cloud object
     var cloud = {
-      x: 0,//random(0,width),
+      x: random(0,width), //0
       y: random(0,height),
       scale: random(0.2,1),
       speed: random(0.2,1),
@@ -43,20 +46,35 @@ function setup() {
     clouds.push(cloud);
   }
 
+  //Create a slider to adjust the clouds
+  cloudSlider = createSlider(0,nClounds,10);
+  cloudSlider.position(0,440);
+
 }
 
 function draw() {
   background(0);
 
+
   //move the clounds
   for(var i=0; i<clouds.length; i++){
     var c = clouds[i];
     c.x += c.speed;
+
+    //if the clouds goes out of the canvas on the right side
+    //reset the position on the left side, so that the clouds go in a loop
+    if(c.x>width){
+      c.x = -200;
+    }
   }
 
 
+  //only display the number of clouds defined by the slider
+  //and make sure we dont access indices which are larger that the cloud array
+  var n = min(cloudSlider.value(),clouds.length);
+  
   //draw the clouds
-  for(var i=0; i<clouds.length; i++){
+  for(var i=0; i<n; i++){
     var cloud = clouds[i];
     push();
     translate(cloud.x,cloud.y);
